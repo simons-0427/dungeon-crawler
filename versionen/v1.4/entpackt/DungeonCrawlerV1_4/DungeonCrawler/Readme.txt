@@ -1,0 +1,1 @@
+Damit Spielfortschritte gespeichert werden können, bitte den Ordner extrahieren.

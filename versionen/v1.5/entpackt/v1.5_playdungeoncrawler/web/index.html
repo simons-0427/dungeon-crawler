@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Dungeon Crawler</title>
+    <style>
+      /* Defeat common host "responsive media" rules that break hit-testing */
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        height: 100%;
+        background: #0c0a12;
+        color: #c8c0d8;
+        font-family: system-ui, Segoe UI, Arial, sans-serif;
+        overflow: hidden;
+      }
+      #wrap {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #status {
+        font-weight: 600;
+        color: #9a90b0;
+        min-height: 1.2em;
+        text-align: center;
+        position: absolute;
+        top: 8px;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+      #progress {
+        width: min(420px, 90vw);
+        height: 10px;
+        border-radius: 6px;
+        position: absolute;
+        top: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+      /*
+       * Stage is sized by JS (CSS pixels). Canvas always fills the stage via
+       * stylesheet rules (not inline — GLFW may strip inline width/height).
+       * Emscripten GLFW then maps mouse using getBoundingClientRect().
+       */
+      #stage {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        line-height: 0;
+        font-size: 0;
+        box-shadow: 0 0 28px rgba(80, 40, 120, 0.22);
+        /* default until fitStage runs */
+        width: min(100vw, 1280px);
+        height: auto;
+        aspect-ratio: 1280 / 720;
+        max-width: 100vw;
+        max-height: 100vh;
+      }
+      canvas.emscripten,
+      #canvas {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        border: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #0c0a12;
+        outline: none;
+        transform: none !important;
+        touch-action: none;
+      }
+      #controls, #output { display: none !important; }
+      /* Overlay — does not reserve vertical space, so the game can fill more of the screen */
+      #hint {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 2px;
+        font-size: 10px;
+        line-height: 1.25;
+        color: #6a6080;
+        text-align: center;
+        padding: 0 4px;
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0.75;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="emscripten" id="status">Downloading...</div>
+      <div class="emscripten">
+        <progress value="0" max="100" id="progress" hidden=1></progress>
+      </div>
+      <div id="stage">
+        <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+      </div>
+      <div id="hint">Click the game once to unlock audio · WASD / Arrows to move · Esc pause<br>Alles wird lokal im Browser gespeichert</div>
+    </div>
+
+    <div class="emscripten" id="controls"></div>
+    <textarea id="output" rows="8"></textarea>
+
+    <script type='text/javascript'>
+      var statusElement = document.getElementById('status');
+      var progressElement = document.getElementById('progress');
+
+      // Logical game resolution (matches SW/SH in constants.h)
+      var GAME_W = 1280;
+      var GAME_H = 720;
+
+      // Letterbox the stage into the viewport. Canvas is 100% of stage;
+      // GLFW CSS-scaling maps mouse via the canvas bounding rect automatically.
+      // Hint/status are overlays — only a tiny edge margin is reserved so the
+      // game is larger (roughly half the previous empty border).
+      function fitStage() {
+        var stage = document.getElementById('stage');
+        if (!stage) return;
+
+        var canvas = (typeof Module !== 'undefined' && Module.canvas) ? Module.canvas : document.getElementById('canvas');
+        // Prefer actual buffer size once raylib has set it
+        var bufW = (canvas && canvas.width)  ? canvas.width  : GAME_W;
+        var bufH = (canvas && canvas.height) ? canvas.height : GAME_H;
+        if (bufW < 1) bufW = GAME_W;
+        if (bufH < 1) bufH = GAME_H;
+
+        // Minimal outer margin — game fills almost the entire viewport
+        var edge = 0;
+        var maxW = Math.max(120, window.innerWidth  - edge * 2);
+        var maxH = Math.max(120, window.innerHeight - edge * 2);
+        // Upscale freely so the game fills the monitor (aspect ratio kept).
+        // Only snap exact near-1.0 to true 1:1 for crisp pixels.
+        var scale = Math.min(maxW / bufW, maxH / bufH);
+        if (!(scale > 0) || !isFinite(scale)) scale = 1;
+        if (scale > 0.98 && scale < 1.02) scale = 1;
+
+        var cssW = Math.max(1, Math.floor(bufW * scale));
+        var cssH = Math.max(1, Math.floor(bufH * scale));
+        stage.style.width  = cssW + 'px';
+        stage.style.height = cssH + 'px';
+        stage.style.aspectRatio = 'auto';
+      }
+
+      var Module = {
+        print: (function() {
+          var element = document.getElementById('output');
+          if (element) element.value = '';
+          return function(text) {
+            if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+            console.log(text);
+            if (element) {
+              element.value += text + "\n";
+              element.scrollTop = element.scrollHeight;
+            }
+          };
+        })(),
+        canvas: (function() {
+          var canvas = document.getElementById('canvas');
+          canvas.addEventListener("webglcontextlost", function(e) {
+            alert('WebGL context lost. Reload the page.');
+            e.preventDefault();
+          }, false);
+          return canvas;
+        })(),
+        setStatus: function(text) {
+          if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: '' };
+          if (text === Module.setStatus.last.text) return;
+          var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+          var now = Date.now();
+          if (m && now - Module.setStatus.last.time < 30) return;
+          Module.setStatus.last.time = now;
+          Module.setStatus.last.text = text;
+          if (m) {
+            text = m[1];
+            progressElement.value = parseInt(m[2])*100;
+            progressElement.max = parseInt(m[4])*100;
+            progressElement.hidden = false;
+          } else {
+            progressElement.value = null;
+            progressElement.hidden = true;
+            if (!text) {
+              statusElement.style.display = 'none';
+              fitStage();
+            }
+          }
+          statusElement.innerHTML = text;
+        },
+        totalDependencies: 0,
+        monitorRunDependencies: function(left) {
+          this.totalDependencies = Math.max(this.totalDependencies, left);
+          Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
+        },
+        onRuntimeInitialized: function() {
+          setTimeout(fitStage, 0);
+          setTimeout(fitStage, 100);
+          setTimeout(fitStage, 500);
+        }
+      };
+
+      Module.setStatus('Downloading...');
+      window.addEventListener('resize', fitStage);
+      window.addEventListener('orientationchange', function() { setTimeout(fitStage, 50); });
+      fitStage();
+      var _fitIv = setInterval(function() {
+        fitStage();
+        if (Module.calledRun) {
+          clearInterval(_fitIv);
+          fitStage();
+        }
+      }, 250);
+
+      window.onerror = function(event) {
+        Module.setStatus('Exception thrown, see JavaScript console');
+        Module.setStatus = function(text) {
+          if (text) console.error('[post-exception status] ' + text);
+        };
+      };
+    </script>
+    <script async type="text/javascript" src="index.js"></script>
+  </body>
+</html>

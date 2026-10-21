@@ -1,0 +1,69 @@
+# skin_data.txt — metadata for the skin idea picker (skinideas.c).
+# This file is loaded at runtime; the pixel-art drawing code itself still
+# lives in skinideas.c (procedural graphics can't be expressed as plain
+# data), but every name/label/description shown in the UI comes from here.
+#
+# Format (pipe-delimited, '#' = comment line, blank lines ignored):
+#   SKIN|<skin_index>|<name>|<rarity/achievement hint>
+#   VARIANT|<skin_index>|<variant_index>|<short label>|<description>
+
+SKIN|0|Chronovore|Rare - Veteran
+SKIN|1|Deep Cartographer|Rare - Explorer
+SKIN|2|Midas|Epic - Coin Hoarder & Rich
+SKIN|3|Blade Legend|Epic - Slayer & Kill Streak
+SKIN|4|Constellation|Legendary - Overachiever
+SKIN|5|Ascendant|Legendary - Perfectionist
+
+VARIANT|0|0|V1|Antique clock - rotating hands on a bronze dial
+VARIANT|0|1|V2|Hourglass - sand silhouette with falling grains
+VARIANT|0|2|V3|Fractured time - cracked crystal, glowing cyan fault lines
+VARIANT|0|3|V4|Pocket watch guardian - embedded watch face + rim chain
+VARIANT|0|4|V5|Temporal vortex - swirling spiral spacetime hole
+VARIANT|0|5|V6|Rewind ghost - strobing afterimage echoes + rewind arrow
+VARIANT|0|6|V7|Grandfather pendulum - gear-tooth rim + swinging bob
+VARIANT|0|7|V8|Time loop - chasing ouroboros arrow ring, rainbow gradient
+
+VARIANT|1|0|V1|Compass rose + swinging needle
+VARIANT|1|1|V2|Living map - topographic contour rings + mountain glyph
+VARIANT|1|2|V3|Star chart - navy skin, gold constellation ink, sextant arc
+VARIANT|1|3|V4|Treasure map - X marks the spot, dotted trail, burnt edges
+VARIANT|1|4|V5|Globe wanderer - rotating longitude/latitude lines + ship
+VARIANT|1|5|V6|Ink quill - spiral ink trail, splatter freckles, feather tip
+VARIANT|1|6|V7|Lighthouse keeper - striped body + rotating beacon cone
+VARIANT|1|7|V8|Explorer's pack - stitched satchel + corkboard pin markers
+
+VARIANT|2|0|V1|Liquid gold - dripping drops + molten veins
+VARIANT|2|1|V2|Golden statue - cracked stone-gold texture, molten eyes
+VARIANT|2|2|V3|Coin king - coin-scale armor + rotating coin halo
+VARIANT|2|3|V4|Golden touch - spreading handprint glow, radiating fingers
+VARIANT|2|4|V5|Vault guardian - riveted plating + rotating combo dial
+VARIANT|2|5|V6|Alchemist's gold - bubbling molten glow + rotating sigil
+VARIANT|2|6|V7|Midas crown - floating jewelled crown + crossed scepters
+VARIANT|2|7|V8|Golden phoenix - fiery gold feather wings + ember sparks
+
+VARIANT|3|0|V1|Crossed blades + war paint
+VARIANT|3|1|V2|Berserker - big cleaver over shoulder, blood aura, eyepatch
+VARIANT|3|2|V3|Duelist - twin rapiers, silver-blue, fencing mask
+VARIANT|3|3|V4|Samurai ronin - katana across back + drifting petals
+VARIANT|3|4|V5|War chief - tribal feather headdress + spear
+VARIANT|3|5|V6|Executioner - hooded silhouette + double-bladed axe
+VARIANT|3|6|V7|Phantom blade - ghostly translucent blade afterimages
+VARIANT|3|7|V8|Gladiator - roman helmet crest + twin short swords
+
+VARIANT|4|0|V1|Orbiting star sparkles + linked constellation eyes
+VARIANT|4|1|V2|Zodiac ring - rotating disc of 12 tiny glyph-dots
+VARIANT|4|2|V3|Nebula cloud - soft painterly colour blobs + pinpricks
+VARIANT|4|3|V4|Galaxy spiral - twin-arm spiral galaxy on the body
+VARIANT|4|4|V5|Shooting star - comet streaking across with fading trail
+VARIANT|4|5|V6|Astral map - celestial coordinate grid, cross-hair stars
+VARIANT|4|6|V7|Cosmic jellyfish - flowing bioluminescent tentacle ribbons
+VARIANT|4|7|V8|Black hole core - glowing accretion disc + lensing warp
+
+VARIANT|5|0|V1|Rainbow halo ring + white-gold eyes
+VARIANT|5|1|V2|Solar flare - pure white-gold corona spikes radiating out
+VARIANT|5|2|V3|Divine wings - big radiant feathered wings, minimal halo
+VARIANT|5|3|V4|Celestial crown - floating light-shard diadem above head
+VARIANT|5|4|V5|Prism being - faceted panels refracting rainbow light
+VARIANT|5|5|V6|Overflowing light - ascending particles + liquid-flame base
+VARIANT|5|6|V7|Sacred geometry - rotating flower-of-life ring
+VARIANT|5|7|V8|Twin suns - two small radiant orbiting solar orbs

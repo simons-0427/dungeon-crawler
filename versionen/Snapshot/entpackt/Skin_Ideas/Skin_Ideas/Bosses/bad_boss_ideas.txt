@@ -1,0 +1,2 @@
+# bad_boss_ideas.txt — rejected boss skins (auto by Boss_ideas.exe)
+# id  name

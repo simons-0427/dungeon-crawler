@@ -1,0 +1,80 @@
+# skin_data.txt — metadata for the skin idea picker (skinideas.c).
+# This file is loaded at runtime; the pixel-art drawing code itself still
+# lives in skinideas.c (procedural graphics can't be expressed as plain
+# data), but every name/label/description shown in the UI comes from here.
+#
+# Format (pipe-delimited, '#' = comment line, blank lines ignored):
+#   SKIN|<skin_index>|<name>|<rarity/achievement hint>
+#   VARIANT|<skin_index>|<variant_index>|<short label>|<description>
+
+SKIN|0|Chronovore|Rare - Veteran
+SKIN|1|Deep Cartographer|Rare - Explorer
+SKIN|2|Midas|Epic - Coin Hoarder & Rich
+SKIN|3|Blade Legend|Epic - Slayer & Kill Streak
+SKIN|4|Constellation|Legendary - Overachiever
+SKIN|5|Ascendant|Legendary - Perfectionist
+
+VARIANT|0|0|V1|Antique clock - rotating hands on a bronze dial
+VARIANT|0|1|V2|Hourglass - sand silhouette with falling grains
+VARIANT|0|2|V3|Metronome keeper - ticking brass pyramid, swinging tempo arm
+VARIANT|0|3|V4|Pocket watch guardian - embedded watch face + rim chain
+VARIANT|0|4|V5|Calendar leaves - ring-bound pages, peeling corner, bold date numerals
+VARIANT|0|5|V6|Sundial shadow - engraved rings, rotating gnomon shadow
+VARIANT|0|6|V7|Grandfather pendulum - gear-tooth rim + swinging bob
+VARIANT|0|7|V8|Time loop - chasing ouroboros arrow ring, rainbow gradient
+
+VARIANT|1|0|V1|Compass rose + swinging needle
+VARIANT|1|1|V2|Sextant navigator - brass degree arc + swinging sighting arm
+VARIANT|1|2|V3|Star chart - navy skin, gold constellation ink, sextant arc
+VARIANT|1|3|V4|Treasure map - X marks the spot, dotted trail, burnt edges
+VARIANT|1|4|V5|Globe wanderer - rotating longitude/latitude lines + ship
+VARIANT|1|5|V6|Tide chart - wavy tide-lines, moon-phase dial at the base
+VARIANT|1|6|V7|Ranger's trail blaze - bark grain body, axe-notch chevron mark
+VARIANT|1|7|V8|Cairn stackstone - stacked stone rings, painted trail arrow
+
+VARIANT|2|0|V1|Liquid gold - dripping drops + molten veins
+VARIANT|2|1|V2|Golden statue - cracked stone-gold texture, molten eyes
+VARIANT|2|2|V3|Gilded Sovereign - towering jewelled crown drips molten gold, drifting embers
+VARIANT|2|3|V4|Coin waterfall - tumbling coin fountain arcing into a splash pool
+VARIANT|2|4|V5|Vault guardian - riveted plating + rotating combo dial
+VARIANT|2|5|V6|Golden scale - tilting balance beam heaped with coin piles
+VARIANT|2|6|V7|Midas crown - floating jewelled crown + crossed scepters
+VARIANT|2|7|V8|Golden phoenix - fiery gold feather wings + ember sparks
+
+VARIANT|3|0|V1|Crossed blades + war paint
+VARIANT|3|1|V2|Berserker - big cleaver over shoulder, blood aura, eyepatch
+VARIANT|3|2|V3|Blutklinge - #8B0000 gradient body, crossed blades behind, glowing yellow eye slits
+VARIANT|3|3|V4|Executioner - hooded silhouette + double-bladed axe
+VARIANT|3|4|V5|Oni Shogun - gold demon horns, crossed katana behind, drifting embers, oni grin
+VARIANT|3|5|V6|Storm Slasher - steel body, jagged lightning-blade, crackling rim arcs on flash
+VARIANT|3|6|V7|Void Reaper - violet void-rift behind, inward-drawn soul motes, dark scythe
+VARIANT|3|7|V8|Dragonfang - scale armor, curved fang-wings, drifting breath mist, fang eyes
+VARIANT|3|8|V9|Gladiator Prime - crested helm arc, round shield, gladius glint
+VARIANT|3|9|V10|Shadow Assassin - smoke wisps, blinking cyan visor, occasional dash streak
+VARIANT|3|10|V11|Crimson Tempest - six blades orbiting as a deadly swirl
+VARIANT|3|11|V12|Soul Harvester - rising soul-wisps, glowing rune notches, green eyes
+VARIANT|3|12|V13|Obsidian Duelist - glass-black body, pulsing lava cracks, elegant rapier
+VARIANT|3|13|V14|Thousand Cuts - scar-covered veteran, each scar flashes gold in turn
+VARIANT|3|14|V15|War God - burning flame crown, crossed spears, ember rain
+VARIANT|3|15|V16|Neon Slayer - cyber-katana glow, glitch flicker, scanline overlay
+
+VARIANT|4|0|V1|Cosmic jellyfish - flowing bioluminescent tentacle ribbons
+VARIANT|4|1|V2|Black hole core - glowing accretion disc + lensing warp
+VARIANT|4|2|V3|Nebula Genesis - swirling colour nebula, a new star igniting at the core
+VARIANT|4|3|V4|Supernova Core - pulsing heart, expanding shockwave rings
+VARIANT|4|4|V5|Astral Dragon - a serpent of starlight coils around the body
+VARIANT|4|5|V6|Comet Rider - a comet with a long icy tail on a tight orbit
+VARIANT|4|6|V7|Celestial Orrery - brass orbital rings with circling planets
+VARIANT|4|7|V8|Galaxy Veil - a flowing cloak of galactic dust and starlight
+VARIANT|4|8|V9|Eclipse - dark disc, blazing corona, orbiting diamond-ring flash
+VARIANT|4|9|V10|Star Forge - hammer strikes forge fresh stars, showering sparks
+
+VARIANT|5|0|V1|Rainbow halo ring + white-gold eyes
+VARIANT|5|1|V2|Seraph - six slow-beating wings of light, golden halo above
+VARIANT|5|2|V3|Apotheosis - the body dissolves upward into rising golden light
+VARIANT|5|3|V4|Prism Avatar - crystalline body splitting white light into a rainbow fan
+VARIANT|5|4|V5|Halo Hierarch - three halos rotate on independent gyroscopic axes
+VARIANT|5|5|V6|Dawnbringer - sunrise body with a slowly rotating ray crown
+VARIANT|5|6|V7|Transcendence - meditating above a blooming lotus of light
+VARIANT|5|7|V8|Divine Judgement - a column of light descends, ascending golden runes
+VARIANT|5|8|V9|The Flawless - a completion ring that seals itself with a flash of light

@@ -1,0 +1,15 @@
+0 ACCEPTED Brassbound Chest
+1 ACCEPTED Chain Vault
+2 ACCEPTED Rune Reliquary
+3 REJECTED Iron Idol
+4 REJECTED Cursed Coffer
+5 ACCEPTED Frostbite Reliquary
+6 ACCEPTED Clockwork Heart
+7 REJECTED Abyssal Treasure Pod
+8 MAYBE/FIX Dragonbone Casket
+9 REJECTED Mimic Seed
+10 REJECTED Astral Star Cache
+11 MAYBE/FIX Obsidian Sun Box
+12 REJECTED Verdant Thorn Pod
+13 REJECTED Portal Keystone
+14 MAYBE/FIX Eclipse Iris Seal

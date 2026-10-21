@@ -1,0 +1,2 @@
+# boss_picks.txt — tier assignments (auto by Boss_ideas.exe)
+# id tier(1=L10..5=L50)  name

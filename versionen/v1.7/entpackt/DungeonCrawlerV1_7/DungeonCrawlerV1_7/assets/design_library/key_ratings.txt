@@ -1,0 +1,15 @@
+0 ACCEPTED Jadeeye
+1 ACCEPTED Starforge
+2 ACCEPTED Rift Thorn
+3 ACCEPTED Bone Reliquary
+4 ACCEPTED Sunbreaker
+5 ACCEPTED Moonveil
+6 REJECTED Verdant Coil
+7 ACCEPTED Frostglass
+8 ACCEPTED Clockheart
+9 REJECTED Abyssal Trident
+10 ACCEPTED Dragonfang
+11 ACCEPTED Storm Compass
+12 ACCEPTED Mourning Bell
+13 ACCEPTED Warden's Oath
+14 ACCEPTED Magma Crown

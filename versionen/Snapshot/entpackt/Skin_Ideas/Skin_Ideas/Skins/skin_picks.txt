@@ -1,0 +1,2 @@
+# skin_picks.txt — skins marked for the real game (auto by skinideas.exe)
+# id  name

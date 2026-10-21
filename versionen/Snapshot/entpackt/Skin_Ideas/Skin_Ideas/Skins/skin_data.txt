@@ -1,0 +1,32 @@
+# skin_data.txt — flat list of skin ideas for skinideas.exe
+# Format: SKIN|<id>|<name>|<description>
+# IDs must match fns[] in skinideas.c (0..27)
+#
+SKIN|0|Antique Clock|Bronze dial, rotating hands, tick marks
+SKIN|1|Time Loop|Ouroboros arrow ring in rainbow
+SKIN|2|Blutklinge|Crimson body, crossed blades, gold eyes
+SKIN|3|Black Hole Core|Dark disc with glowing accretion ring
+SKIN|4|Apotheosis|Body dissolves into rising golden light
+SKIN|5|Halo Hierarch|Three gyroscopic gold halos
+SKIN|6|Dawnbringer|Sunrise body with rotating ray crown
+SKIN|7|Abyssal Eye|Void iris, tentacles, dilating pupil
+SKIN|8|Phoenix Plume|Fire wings, white-hot core, embers
+SKIN|9|Crystal Prism|Splits a white beam into a rainbow fan
+SKIN|10|Void Serpent|Neon serpent coils a dark core
+SKIN|11|Eclipse Warden|Dark moon eclipses a star
+SKIN|12|Apex Bladelord|Blade Legend rework: twin greatswords
+SKIN|13|Bone Classic|Bone skull silhouette (classic game art)
+SKIN|14|Skull Ember|Bone skull, ember sockets, rising sparks
+SKIN|15|Skull Void|Bone skull, violet void sockets
+SKIN|16|Skull Crowned|Bone skull + floating gold crown
+SKIN|17|Skull Crimson|Bone skull, crimson sockets
+SKIN|18|Starfall Unicorn|Super-cute chubby unicorn: huge eyes, candy horn, hearts, soft mane
+SKIN|19|Apex Rex|T-rex silhouette: long snout, chomp jaw, dorsal spines, tiny arms
+SKIN|20|Legate Praetorian|Centurion-inspired bronze lorica scales, scutum, gladius, red crest
+SKIN|21|Skullvoid Crowned|Completely violet Skullvoid, amethyst sockets, imperial crown and void motes
+SKIN|22|Poptart Cat|Pixel-art copy of Nyan-Cat-PNG-Transparent.png with pastry, frosting, cat and rainbow
+SKIN|23|Bloodscale Vanguard|Bloodscale variant with an opaque front shield and two red-glowing sword grips on the back
+SKIN|24|Stormforged Aegis|Stormforged variant with an opaque front shield and two cyan-glowing sword grips on the back
+SKIN|25|Sunforged Crusader|Sunforged variant with two gold sword grips on the back instead of visible blades
+SKIN|26|Black Hole Interstellar|Black Hole copy with a thin photon ring, lensed amber accretion disk and deep event horizon
+SKIN|27|Apex Bladelord Splitguard|Apex Bladelord copy with one glowing greatsword carried on each side

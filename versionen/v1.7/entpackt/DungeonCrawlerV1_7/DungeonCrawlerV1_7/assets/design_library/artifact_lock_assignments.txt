@@ -1,0 +1,40 @@
+# Artifact lock assignments. Edit with artifact_lock_editor.exe.
+# Multiple artifact locks are possible variants; one is selected per artifact spawn.
+# Multiple keys are alternatives; any listed key opens the locked object.
+# Empty artifact lists mean no lock. Empty key lists keep a lock sealed.
+
+artifact.ember_crown=
+artifact.moon_compass=
+artifact.void_prism=
+artifact.sun_scarab=
+artifact.ancient_hourglass=
+artifact.storm_core=
+artifact.blood_chalice=
+artifact.frost_lotus=frostbite_reliquary
+artifact.serpent_reliquary=brassbound_chest
+artifact.astral_orrery=clockwork_heart
+artifact.bone_lantern=brassbound_chest
+artifact.abyss_anchor=rune_reliquary
+artifact.phoenix_quill=chain_vault
+artifact.echo_mask=chain_vault
+artifact.gilded_eye=clockwork_heart
+artifact.thorn_heart=
+artifact.eclipse_halo=rune_reliquary
+artifact.tide_pearl=frostbite_reliquary
+
+lock.brassbound_chest=jadeeye
+lock.chain_vault=wardens_oath
+lock.rune_reliquary=rift_thorn
+lock.iron_idol=
+lock.cursed_coffer=
+lock.frostbite_reliquary=frostglass
+lock.clockwork_heart=clockheart
+lock.abyssal_treasure_pod=abyssal_trident
+lock.dragonbone_casket=bone_reliquary
+lock.mimic_seed=
+lock.astral_star_cache=
+lock.obsidian_sun_box=
+lock.verdant_thorn_pod=verdant_coil
+lock.portal_keystone=clockheart
+lock.eclipse_iris_seal=mourning_bell
+lock.rift_chain_anchor=

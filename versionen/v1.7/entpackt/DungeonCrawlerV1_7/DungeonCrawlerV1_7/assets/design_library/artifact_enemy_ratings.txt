@@ -1,0 +1,12 @@
+0 MAYBE/FIX Original Arcane Orb
+1 ACCEPTED Azure Wisp
+2 ACCEPTED Bone Crown
+3 MAYBE/FIX Ivory Revenant
+4 MAYBE/FIX Moon Seraph
+5 ACCEPTED Ash Seraph
+6 MAYBE/FIX Obsidian Spawn
+7 MAYBE/FIX Grave Seraph
+8 MAYBE/FIX Halfmoon Husk
+9 REJECTED Chainbound
+10 REJECTED Riftscar
+11 REJECTED Cinder Reliquary
