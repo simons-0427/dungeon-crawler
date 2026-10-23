@@ -2,3 +2,4 @@ versionen/v1.5/DungeonCrawler_Android_v1.5.zip filter=lfs diff=lfs merge=lfs -te
 versionen/v1.6/DungeonCrawlerV1_6.zip filter=lfs diff=lfs merge=lfs -text
 versionen/v1.7/DungeonCrawlerV1_7.zip filter=lfs diff=lfs merge=lfs -text
 versionen/Snapshot/snapshot_dungeoncrawler_v1.7.zip filter=lfs diff=lfs merge=lfs -text
+versionen/v1.7/entpackt/v1.7_playdungeoncrawler/** -text

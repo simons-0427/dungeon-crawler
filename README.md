@@ -34,6 +34,13 @@ Die Datumsangaben stammen aus `download-data.js`. Jede ZIP-Datei liegt im Versio
 | v1.6 | Dungeon Crawler: Chambers of Chaos | 2026-10-18 | [DungeonCrawlerV1_6.zip](<versionen/v1.6/DungeonCrawlerV1_6.zip>) |
 | Snapshot | Preview v1.7 | 2027-01-08 | [snapshot_dungeoncrawler_v1.7.zip](<versionen/Snapshot/snapshot_dungeoncrawler_v1.7.zip>) |
 | v1.7 | Dungeon Crawler: The Secret Chambers | 2027-01-23 | [DungeonCrawlerV1_7.zip](<versionen/v1.7/DungeonCrawlerV1_7.zip>) |
+| v1.7 | Dungeon Crawler für das Web | 2027-02-12 | [v1.7_playdungeoncrawler.zip](<versionen/v1.7/v1.7_playdungeoncrawler.zip>) |
+
+## Webversion 1.7
+
+Die Browserfassung liegt als ZIP und zusätzlich entpackt unter `versionen/v1.7/`. Sie enthält die deutsche und englische Website-Oberfläche mit denselben Spieldateien. Hinweise zum lokalen Start, zur Steuerung und zur Startausstattung stehen in der [README des Webpakets](versionen/v1.7/entpackt/v1.7_playdungeoncrawler/README.md).
+
+[Deutsch spielen](https://smstark-projekt.de/playdungeoncrawler/v1.7/) | [Play in English](https://smstark-projekt.de/playdungeoncrawler/v1.7/en/)
 
 ## Herkunft
 

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d0b18">
+  <title>Dungeon Crawler v1.7 spielen</title>
+  <style>
+    @font-face { font-family: 'Syne'; font-style: normal; font-weight: 400 800; font-display: swap; src: url('assets/fonts/syne-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 100 1000; font-display: swap; src: url('assets/fonts/dm-sans-latin.woff2') format('woff2'); }
+    :root { color-scheme: dark; font-family: Arial, sans-serif; --header-gutter: clamp(1.5rem, 5vw, 4rem); }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0d0b18; color: #e9e4f7; }
+    main { width: 100%; height: 100vh; height: 100dvh; padding: 4px 12px 2px; display: flex; flex-direction: column; }
+    .bar { min-height: 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: 16px; margin-inline: -12px; padding: 0 var(--header-gutter) 4px; }
+    .brand { display: flex; align-items: center; justify-self: start; grid-column: 1; grid-row: 1; }
+    .actions { display: flex; align-items: center; justify-self: end; grid-column: 3; grid-row: 1; gap: .8rem; }
+    .nav-logo { flex: none; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; color: #e2e8f0; text-decoration: none; }
+    .nav-logo span { color: #6ee7b7; }
+    .nav-logo:focus-visible { outline: 2px solid #6ee7b7; outline-offset: 3px; }
+    .links { display: flex; align-items: center; justify-content: center; justify-self: center; grid-column: 2; grid-row: 1; gap: 10px; flex-wrap: wrap; }
+    .links a, #fullscreen { border: 1px solid #8373b5; border-radius: 8px; padding: 9px 13px; background: #201936; color: #f4eeff; font: inherit; text-decoration: none; cursor: pointer; }
+    .links a:hover, .links a:focus-visible, #fullscreen:hover, #fullscreen:focus-visible { background: #382953; outline: 2px solid #b49ce8; outline-offset: 2px; }
+    .game { position: relative; flex: 1; min-height: 0; width: 100%; display: flex; align-items: flex-end; justify-content: center; background: #000; border: 1px solid #554977; border-radius: 8px; overflow: hidden; }
+    .game:fullscreen { width: 100%; height: 100%; border: 0; border-radius: 0; }
+    .game-note { flex: none; margin: 2px 0 0; color: #706a81; font-size: 9px; line-height: 1.1; text-align: center; }
+    .game:fullscreen + .game-note { display: none; }
+    canvas { display: block; flex: none; outline: none; }
+    #status { position: absolute; left: 0; right: 0; top: 50%; padding: 16px; text-align: center; transform: translateY(-50%); color: white; background: rgba(13, 11, 24, .9); }
+    #status[hidden] { display: none; }
+    @media (max-width: 960px) { :root { --header-gutter: 1.5rem; } }
+    @media (max-width: 800px) { .bar { grid-template-columns: minmax(0, 1fr) auto; row-gap: 6px; } .brand { grid-column: 1; grid-row: 1; } .actions { grid-column: 2; grid-row: 1; } .links { grid-column: 1 / -1; grid-row: 2; gap: 8px; } .links a, #fullscreen { padding: 7px 9px; font-size: 13px; } }
+    @media (max-width: 650px) { main { padding: 8px; } .bar { margin-inline: -8px; } }
+  </style>
+  <link rel="stylesheet" href="assets/site-header.css">
+  <script src="assets/site-header.js" defer></script>
+</head>
+<body>
+<main>
+  <div class="bar">
+    <div class="brand">
+      <a href="https://smstark-projekt.de/" class="nav-logo" aria-label="sms. Startseite">sms<span>.</span></a>
+    </div>
+    <nav class="links" id="menu-links" aria-label="Hauptmenü Links">
+      <a href="https://smstark-projekt.de/data/DungeonCrawlerV1_7.zip">PC-Version herunterladen</a>
+      <a href="https://smstark-projekt.de/projekte/dungeoncrawler" target="_blank" rel="noopener noreferrer">Projektseite</a>
+    </nav>
+    <div class="actions">
+      <button type="button" class="language-switch" data-language-target="en/" data-language-file-target="en/index.html" aria-label="Zur englischen Version wechseln" title="Zur englischen Version wechseln"><span class="language-option language-option-active" aria-hidden="true">DE</span><span class="language-separator" aria-hidden="true">/</span><span class="language-option" aria-hidden="true">EN</span></button>
+      <button type="button" id="fullscreen">Vollbild</button>
+    </div>
+  </div>
+  <div class="game" id="game">
+    <canvas id="canvas" width="1280" height="720" tabindex="0" aria-label="Dungeon Crawler Spiel"></canvas>
+    <div id="status" role="status">Spiel wird geladen ...</div>
+  </div>
+  <footer class="game-note">Einmal ins Spiel klicken, um den Ton zu aktivieren. Bewegen mit W, A, S, D oder den Pfeiltasten. Pause mit Esc.<br>Spielstände werden lokal im Browser gespeichert.</footer>
+</main>
+<script>
+  const canvas = document.getElementById('canvas');
+  const game = document.getElementById('game');
+  const status = document.getElementById('status');
+  const english = document.documentElement.lang === 'en';
+  const loadingText = english ? 'Loading game ...' : 'Spiel wird geladen ...';
+  const assetsBase = new URL(english ? '../' : './', document.baseURI);
+  let syncRunning = false;
+  let syncPending = false;
+
+  function fitCanvas() {
+    const width = canvas.width || 1280;
+    const height = canvas.height || 720;
+    const availableWidth = game.clientWidth;
+    const availableHeight = game.clientHeight;
+    if (!availableWidth || !availableHeight) return;
+    const scale = Math.min(availableWidth / width, availableHeight / height);
+    canvas.style.width = width * scale + 'px';
+    canvas.style.height = height * scale + 'px';
+  }
+  new ResizeObserver(fitCanvas).observe(game);
+  new MutationObserver(fitCanvas).observe(canvas, { attributes: true, attributeFilter: ['width', 'height'] });
+  fitCanvas();
+
+  var Module = {
+    canvas,
+    locateFile: function (path) { return new URL(path, assetsBase).href; },
+    printErr: function (message) { console.error(message); },
+    setStatus: function (message) {
+      if (!message || message === 'Running...') status.textContent = loadingText;
+      else if (message.startsWith('Downloading data...')) status.textContent = (english ? 'Downloading game data' : 'Spieldaten werden geladen') + message.slice('Downloading data...'.length);
+      else status.textContent = message;
+    },
+    onRuntimeInitialized: function () {
+      status.hidden = true;
+      canvas.focus();
+    },
+    onAbort: function (message) {
+      status.hidden = false;
+      status.textContent = (english ? 'The game could not be started: ' : 'Das Spiel konnte nicht gestartet werden: ') + message;
+    },
+    requestSaveSync: function () {
+      if (syncRunning) { syncPending = true; return; }
+      syncRunning = true;
+      FS.syncfs(false, function (error) {
+        if (error) console.error('Could not save game progress:', error);
+        syncRunning = false;
+        if (syncPending) {
+          syncPending = false;
+          Module.requestSaveSync();
+        }
+      });
+    }
+  };
+
+  document.getElementById('fullscreen').addEventListener('click', function () {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else game.requestFullscreen().then(function () { canvas.focus(); }).catch(console.error);
+  });
+  canvas.addEventListener('click', function () { canvas.focus(); });
+  window.addEventListener('keydown', function (event) {
+    if (document.activeElement === canvas && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) event.preventDefault();
+  });
+</script>
+<script async src="game.js"></script>
+</body>
+</html>
