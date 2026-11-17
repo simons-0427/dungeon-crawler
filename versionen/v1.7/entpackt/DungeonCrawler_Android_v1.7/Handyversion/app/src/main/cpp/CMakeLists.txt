@@ -30,7 +30,6 @@ add_library(dungeon_crawler SHARED
     "${CMAKE_CURRENT_LIST_DIR}/mobile_input.c"
     "${CMAKE_CURRENT_LIST_DIR}/mobile_platform.c"
     "${CMAKE_CURRENT_LIST_DIR}/mobile_skin_preview.c"
-    "${CMAKE_CURRENT_LIST_DIR}/mobile_debug.c"
 )
 
 target_include_directories(dungeon_crawler PRIVATE
@@ -54,10 +53,3 @@ target_link_options(dungeon_crawler PRIVATE
     "-Wl,--wrap=GetMouseWheelMove"
     "-Wl,--wrap=GetMouseWheelMoveV"
 )
-
-
-option(MOBILE_MAXED_DEBUG "Fully unlocked independent mobile debug profile" OFF)
-if(MOBILE_MAXED_DEBUG)
-    target_compile_definitions(dungeon_crawler PRIVATE MOBILE_MAXED_DEBUG)
-    target_link_options(dungeon_crawler PRIVATE "-Wl,--wrap=BuildAchievementProgress")
-endif()

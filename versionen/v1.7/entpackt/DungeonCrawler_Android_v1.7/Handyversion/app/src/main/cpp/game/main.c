@@ -8,7 +8,6 @@
 #include "game_items.h"      // ShutdownArtifactAssets
 #include "game_player.h"     // UseItm, TryMove, DrawPlayer, UpdPlayerFall
 #include "game_entities.h"   // UpdEnes, DrawEnemies
-#include "mobile_debug.h"
 #include "game_boss.h"       // UpdBoss, DrawBoss, DrawBossBar
 #include "game_particles.h"  // UpdPars, DrawPars
 #include "game_ui.h"         // DrawMenu/HUD/PauseMenu/Overlay + layout getters
@@ -134,7 +133,7 @@ int main(int argc, char **argv) {
     LoadStats();
     ChallengeLoadData();
     LoadShop();
-    MobileApplyDebugProfile();
+
 #ifdef PLATFORM_WEB
     WebApplyStarterProfile();
 #endif
@@ -172,7 +171,7 @@ static void GameFrame(void) {
         if (GameConsoleUpdate()) { show_windows_console = false; SaveSettings(); }
         float dt = GetFrameTime();
         float t  = GetTime();
-        MobileDebugUpdate();
+
         MobileInputUpdate(gs==GS_PLAY,mobile_control_mode);
         UpdateGameAudio(gs, dt);
         UpdateSfx(dt);

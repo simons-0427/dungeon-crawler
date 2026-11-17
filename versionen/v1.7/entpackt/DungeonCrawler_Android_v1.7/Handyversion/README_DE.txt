@@ -15,8 +15,9 @@ Die alte Android-Version 1.5 bleibt eine separate App.
 Quellcode
 Das Projekt in Android Studio öffnen und den Android-SDK-Pfad einrichten.
 Benötigt JDK 17+, SDK 36.1, NDK 28.2.13676358 und CMake 3.22.1.
-Mit gradlew.bat assembleNormalDebug wird die normale App gebaut.
-Die APK liegt danach unter app/build/outputs/apk/normal/debug/.
+Mit gradlew.bat assembleNormalRelease wird die normale App gebaut.
+Die APK liegt danach unter app/build/outputs/apk/normal/release/.
+Eigene Builds müssen vor der Installation signiert werden.
 
 raylib und die benötigten Bibliotheksquellen sind enthalten.
 Lizenztexte stehen bei den Bibliotheken unter third_party.

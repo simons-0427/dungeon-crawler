@@ -48,14 +48,6 @@ android {
     productFlavors {
         create("normal") {
             dimension = "profile"
-            externalNativeBuild.cmake.arguments += "-DMOBILE_MAXED_DEBUG=OFF"
-        }
-        create("maxed") {
-            dimension = "profile"
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-            resValue("string", "app_name", "Dungeon Crawler Debug")
-            externalNativeBuild.cmake.arguments += "-DMOBILE_MAXED_DEBUG=ON"
         }
     }
 
