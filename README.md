@@ -35,12 +35,23 @@ Die Datumsangaben stammen aus `download-data.js`. Jede ZIP-Datei liegt im Versio
 | Snapshot | Preview v1.7 | 2027-01-08 | [snapshot_dungeoncrawler_v1.7.zip](<versionen/Snapshot/snapshot_dungeoncrawler_v1.7.zip>) |
 | v1.7 | Dungeon Crawler: The Secret Chambers | 2027-01-23 | [DungeonCrawlerV1_7.zip](<versionen/v1.7/DungeonCrawlerV1_7.zip>) |
 | v1.7 | Dungeon Crawler für das Web | 2027-02-12 | [v1.7_playdungeoncrawler.zip](<versionen/v1.7/v1.7_playdungeoncrawler.zip>) |
+| v1.7 | Dungeon Crawler Handyversion | 2027-03-14 | [DungeonCrawler_Android_v1.7.apk](<versionen/v1.7/DungeonCrawler_Android_v1.7.apk>)<br>[DungeonCrawler_Android_v1.7.zip](<versionen/v1.7/DungeonCrawler_Android_v1.7.zip>) |
 
 ## Webversion 1.7
 
 Die Browserfassung liegt als ZIP und zusätzlich entpackt unter `versionen/v1.7/`. Sie enthält die deutsche und englische Website-Oberfläche mit denselben Spieldateien. Hinweise zum lokalen Start, zur Steuerung und zur Startausstattung stehen in der [README des Webpakets](versionen/v1.7/entpackt/v1.7_playdungeoncrawler/README.md).
 
 [Deutsch spielen](https://smstark-projekt.de/playdungeoncrawler/v1.7/) | [Play in English](https://smstark-projekt.de/playdungeoncrawler/v1.7/en/)
+
+## Androidversion 1.7
+
+The Secret Chambers, Build 1.7.6. Android 8.0 oder neuer, ARM64 und x86-64.
+
+[APK herunterladen](versionen/v1.7/DungeonCrawler_Android_v1.7.apk) | [Projekt als ZIP](versionen/v1.7/DungeonCrawler_Android_v1.7.zip)
+
+Das ZIP enthält die APK, das Android-Projekt, die benötigten Assets und Bibliotheken.
+Kurze Anleitungen stehen in README_DE.txt und README_EN.txt.
+Der Quellcode liegt auch [entpackt im Versionsordner](versionen/v1.7/entpackt/DungeonCrawler_Android_v1.7/Handyversion).
 
 ## Herkunft
 
